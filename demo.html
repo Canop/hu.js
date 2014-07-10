@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<script src="hu.js"></script>
+	<title>A too simple svg library</title>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<script>
+
+
+var svg = ù('<svg>', 'body').css({
+	background:'#bada55', position:'fixed', left:0, top:0, right:0, bottom:0
+});
+
+
+var grad = svg.define('<linearGradient>').attr({
+	x1:"0", y1:"0", x2:"1", y2:"1"
+}).stops(
+	{offset:'0%', stopColor:'DarkSlateGray', stopOpacity:0.4},
+	{offset:'80%', stopColor:'FireBrick', stopOpacity:0.8}
+);
+
+// a few rounded animated lines
+for (var y = 50; y<svg.height(); y+= 100) {
+	var l = ù('<line', svg).attr({
+		x1:100, y1:y, x2:100+y, y2:y,
+		stroke:'#'+(Math.random()*16777216|0).toString(16), strokeOpacity:1,
+		strokeWidth:30, strokeLinecap:'round'
+	}).animate({strokeOpacity:0, x2:svg.width()/2}, 10*y);
+}
+
+function randomPos(){
+	return {x:Math.random()*(svg.width()-100)|0, y:Math.random()*(svg.height()-100)|0}
+}
+
+// a few boxes which move when you click them
+for (var i=0; i<20; i++) {
+	var g = ù('<svg>', svg)
+	.attr(randomPos())
+	.css({cursor:'pointer'})
+	.on('click', function(){
+		ù(this).animate(randomPos(), 500);
+	});
+	
+	ù('<rect>', g)
+	.attr({fill:grad, width:100, height:100});
+
+	ù('<text>', g)
+	.attr({x:50,y:50, textAnchor:"middle", alignmentBaseline:"middle"})
+	.css({fontWeight:'bold', fill:'white'})
+	.text('Click Me!');
+}
+
+</script>
+</body>
+</html>
