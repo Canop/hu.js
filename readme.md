@@ -113,7 +113,7 @@ This is useful for shared resources like gradients.
 
 #### Example
 
-Create a diagonal linear gradient with four steps of decreasing opacity, uses it in a rectangle
+Create a diagonal linear gradient with four steps of decreasing opacity, use it in a rectangle
 
     var grad = svg.define('<linearGradient').attr({
 		x1:0, y1:0, x2:1, y2:1

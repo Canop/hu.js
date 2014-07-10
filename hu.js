@@ -103,7 +103,6 @@
 	fn.cssnv = function(name, value){
 		name = rcc(name);
 		if (value===undefined) return this.n.style[name];
-		if (typeof value === "number") value = value+"px";
 		this.n.style[name] = value;
 		return this;
 	}
