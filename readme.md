@@ -34,7 +34,15 @@ That's why you might find hu.js useful, assuming its limited set of features isn
 
 ### SVG :
 
-    <svg style="width: 100px; height: 100px;"><defs><radialGradient id="ù1" cx="0.3" cy="0.3" r="0.8"><stop offset="0%" stop-color="yellow"></stop><stop offset="100%" stop-color="green"></stop></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(#ù1)"></circle></svg>
+    <svg style="width: 100px; height: 100px;">
+		<defs>
+			<radialGradient id="ù1" cx="0.3" cy="0.3" r="0.8">
+				<stop offset="0%" stop-color="yellow"></stop>
+				<stop offset="100%" stop-color="green"></stop>
+			</radialGradient>
+		</defs>
+		<circle cx="50" cy="50" r="50" fill="url(#ù1)"></circle>
+	</svg>
 
 # More complex examples
 
@@ -58,7 +66,7 @@ This function is used to
 - find an existing svg element with a css selector
 - wrap a provided svg element (and optionnaly append it to an existing html or svg element)
 
-In all cases, there's always exactly one svg element in a resulting `Hu` object. The `hu` function returns `null` if the passed arguments make it impossible to create the element. If a provided selector (or nodelist, or jquery set, or array of elements) contains more than one element, only the first one is considered.
+In all cases, there's always exactly one svg element in a resulting `Hu` object. The `hu` function returns `null` if the passed arguments make it impossible to create the element. If a provided selector (or nodelist, or jquery set, or array of elements) refers to more than one element, only the first one is considered.
 
 
 #### Exemples
@@ -91,10 +99,10 @@ Set a style property
     
 Set a few attributes to a newly created line
 
-    ù('<line>', group).attr({
+    hu('<line>', group).attr({
 		x1:10, y1:20, x2:30, y2:40,
 		stroke:"green", strokeOpacity:0.6,
-		strokeWidth:CS, strokeLinecap:'round'
+		strokeWidth:5, strokeLinecap:'round'
 	});
 
 ## define
@@ -125,7 +133,7 @@ Create a diagonal linear gradient with four steps of decreasing opacity, uses it
 
     var grad = svg.rgrad(0.3, 0.3, 0.8, 'white', 'rgba(100,50,57,0.2)');
 
-*Note : similar hgrad and vgrad functions might be available in the future as shortcuts for horizontal and vertical gradients*
+*Note : similar hgrad and vgrad functions might be available in the future as shortcuts for horizontal and vertical gradients. Just ask if you want them now.*
 
 ## animate
 
