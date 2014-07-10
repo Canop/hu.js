@@ -91,15 +91,12 @@
 	}
 	
 	fn.width = function(v){
-		if (v === undefined) {
-			return this.n.clientWidth;
-		}
+		if (v === undefined) return this.n.clientWidth;
+
 		return this.cssnv('width', v);
 	}
 	fn.height = function(v){
-		if (v === undefined) {
-			return this.n.clientHeight;
-		}
+		if (v === undefined) return this.n.clientHeight;
 		return this.cssnv('height', v);
 	}
 	

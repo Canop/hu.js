@@ -97,7 +97,7 @@ Set a style property
 
     svg.css('background', '#2a4646');
     
-Set a few attributes to a newly created line
+Create a `line`, append it to a group and set a few attributes
 
     hu('<line>', group).attr({
 		x1:10, y1:20, x2:30, y2:40,
