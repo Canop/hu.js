@@ -115,7 +115,7 @@ This is useful for shared resources like gradients.
 
 Create a diagonal linear gradient with four steps of decreasing opacity, use it in a rectangle
 
-    var grad = svg.define('<linearGradient').attr({
+    var grad = svg.define('<linearGradient>').attr({
 		x1:0, y1:0, x2:1, y2:1
 	}).stops(
 		{offset:"0%", stopColor:"red", stopOpacity:1},
@@ -123,7 +123,7 @@ Create a diagonal linear gradient with four steps of decreasing opacity, use it 
 		{offset:"20%", stopColor:"red", stopOpacity:0.2},
 		{offset:"100%", stopColor:"green", stopOpacity:0}
 	);
-	ù('<rect', svg).attr({x:0, y:0, width:100, height:20, fill:grad});
+	ù('<rect>', svg).attr({x:0, y:0, width:100, height:20, fill:grad});
 	
 ## rgrad
 
@@ -141,10 +141,10 @@ Animates one or more numerical style properties or attributes.
 
 #### Example 
 
-    var l = ù('<line', svg).attr({
+    var l = ù('<line>', svg).attr({
     	x1:100, y1:0, x2:200, y2:20,
     	stroke:'red', strokeOpacity:0.8,
     	strokeWidth:5, strokeLinecap:'round'
     }).animate({strokeOpacity:0, x2:300}, 1000, function(){
-    	l.remove
+    	l.remove();
     });

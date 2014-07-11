@@ -10,12 +10,12 @@
 <body>
 <script>
 
-
+// build a svg element covering the whole window
 var svg = ù('<svg>', 'body').css({
 	background:'#bada55', position:'fixed', left:0, top:0, right:0, bottom:0
 });
 
-
+// register a reusable linear diagonal gradient
 var grad = svg.define('<linearGradient>').attr({
 	x1:"0", y1:"0", x2:"1", y2:"1"
 }).stops(
@@ -25,7 +25,7 @@ var grad = svg.define('<linearGradient>').attr({
 
 // a few rounded animated lines
 for (var y = 50; y<svg.height(); y+= 100) {
-	var l = ù('<line', svg).attr({
+	var l = ù('<line></line>', svg).attr({
 		x1:100, y1:y, x2:100+y, y2:y,
 		stroke:'#'+(Math.random()*16777216|0).toString(16), strokeOpacity:1,
 		strokeWidth:30, strokeLinecap:'round'

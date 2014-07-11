@@ -21,8 +21,9 @@
 		return a[0]||a; // to support jQuery elements and nodelists
 	}
 	
+	// reverse camel case : "strokeOpacity" -> "stroke-opacity"
 	function rcc(n){
-		return n.replace(/[A-W]/g, function(l){ return '-'+l.toLowerCase() });
+		return n.replace(/[A-Z]/g, function(l){ return '-'+l.toLowerCase() });
 	}
 
 	window.ù = window.hu = function(a, c){
@@ -100,6 +101,7 @@
 		return this.cssnv('height', v);
 	}
 	
+	// css name value
 	fn.cssnv = function(name, value){
 		name = rcc(name);
 		if (value===undefined) return this.n.style[name];
@@ -115,6 +117,7 @@
 		return this;
 	}
 	
+	// attr name value
 	fn.attrnv = function(name, value){
 		name = rcc(name);
 		if (value===undefined) return this.n.getAttributeNS(null, name);
