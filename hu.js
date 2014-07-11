@@ -190,5 +190,9 @@
 		})();
 		return this;
 	}
+	
+	for (var n in fn) {
+		if (typeof fn[n] === "function") ù[n] = fn[n];
+	}
 
 })();

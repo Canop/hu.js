@@ -29,7 +29,7 @@ for (var y = 50; y<svg.height(); y+= 100) {
 		x1:100, y1:y, x2:100+y, y2:y,
 		stroke:'#'+(Math.random()*16777216|0).toString(16), strokeOpacity:1,
 		strokeWidth:30, strokeLinecap:'round'
-	}).animate({strokeOpacity:0, x2:svg.width()/2}, 10*y);
+	}).animate({strokeOpacity:0, x2:svg.width()/2}, 15*y, ù.remove);
 }
 
 function randomPos(){

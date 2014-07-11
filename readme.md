@@ -101,7 +101,7 @@ Create a `line`, append it to a group and set a few attributes
 
     hu('<line>', group).attr({
 		x1:10, y1:20, x2:30, y2:40,
-		stroke:"green", strokeOpacity:0.6,
+		stroke:'green', strokeOpacity:0.6,
 		strokeWidth:5, strokeLinecap:'round'
 	});
 
@@ -148,7 +148,13 @@ Animates one or more numerical style properties or attributes.
     var l = ù('<line>', svg).attr({
     	x1:100, y1:0, x2:200, y2:20,
     	stroke:'red', strokeOpacity:0.8,
-    	strokeWidth:5, strokeLinecap:'round'
     }).animate({strokeOpacity:0, x2:300}, 1000, function(){
     	l.remove();
     });
+
+This example can also be simplified into
+
+    ù('<line>', svg).attr({
+    	x1:100, y1:0, x2:200, y2:20,
+    	stroke:'red', strokeOpacity:0.8,
+    }).animate({strokeOpacity:0, x2:300}, 1000, ù.remove);
