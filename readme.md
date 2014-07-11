@@ -1,4 +1,10 @@
 
+# WARNING
+
+hu.js is still very experimental. The API **will* change.
+
+Right now there's a big bug on Firefox. Please don't use it in production.
+
 # Why hu.js
 
 The general awkwardness of DOM functions is even worse for SVG than for HTML.
