@@ -1,9 +1,7 @@
 
 # WARNING
 
-hu.js is still very experimental. The API **will* change.
-
-Right now there's a big bug on Firefox. Please don't use it in production.
+hu.js is still very young. There are probably still bugs.
 
 # Why hu.js
 
