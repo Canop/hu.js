@@ -83,7 +83,7 @@ Get an element we have in our group :
 
     var rect = hu('#rectId', group);
     
-## attr & css
+## attr / css
 
 These very similar functions let you set attributes or style properties.
 
@@ -145,11 +145,11 @@ Animates one or more numerical style properties or attributes.
 
 #### Example 
 
-    var l = ù('<line>', svg).attr({
+    ù('<line>', svg).attr({
     	x1:100, y1:0, x2:200, y2:20,
     	stroke:'red', strokeOpacity:0.8,
     }).animate({strokeOpacity:0, x2:300}, 1000, function(){
-    	l.remove();
+    	this.remove();
     });
 
 This example can also be simplified into
@@ -158,3 +158,16 @@ This example can also be simplified into
     	x1:100, y1:0, x2:200, y2:20,
     	stroke:'red', strokeOpacity:0.8,
     }).animate({strokeOpacity:0, x2:300}, 1000, ù.remove);
+
+## on / off
+
+Those functions bind or unbind an event handler. You can pass several event types by separating them with spaces.
+
+#### Example
+
+	hu('<rect>', svg)
+	.attr({x:0, y:100, width:200, height:300})
+	.css({cursor:'pointer'})
+	.on('click', function(){
+		hu(this).animate({x:100}, 500);
+	});

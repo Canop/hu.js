@@ -4,37 +4,49 @@
 ;(function(){
 	"use strict";
 	
-	var svgregexp = /^\s*<\s*(\w+)\s*>?\s*$/,
-		NS = "http://www.w3.org/2000/svg",
-		nextnum = 1,
+	var nextnum = 1,
 		U = function(n) { this.n = n },
-		fn = U.prototype;
+		fn = U.prototype,
+		nopx = { // css properties which don't need a unit
+			"columnCount": 1,
+			"fillOpacity": 1,
+			"flexGrow": 1,
+			"flexShrink": 1,
+			"fontWeight": 1,
+			"opacity": 1,
+			"zIndex": 1
+		};
 
 	function node(a, c){
 		if (a instanceof U) return a.n;
 		if (c) c = node(c);
 		if (typeof a === "string") {
-			var m = a.match(svgregexp);
-			if (m) return document.createElementNS(NS, m[1]);
+			var m = a.match(/^\s*<\s*(\w+)\s*>?\s*$/);
+			if (m) {
+				var n = document.createElementNS("http://www.w3.org/2000/svg", m[1]);
+				if (/^svg$/i.test(n.tagName)) {
+					// hack to force Firefox to see the dimension of the element
+					ù('<rect', n).attr({width:"100%", height:"100%", opacity:0});
+				}
+				return n;
+			}
 			return (c||document).querySelector(a);
 		}
 		return a[0]||a; // to support jQuery elements and nodelists
+	}	
+
+	window.ù = window.hu = function(a, c){
+		if (!c) return new U(node(a));
+		c = node(c);
+		a = node(a, c);
+		if (!a) return null;
+		if (c && !a.parentNode) c.appendChild(a);
+		return new U(a);
 	}
-	
+
 	// reverse camel case : "strokeOpacity" -> "stroke-opacity"
 	function rcc(n){
 		return n.replace(/[A-Z]/g, function(l){ return '-'+l.toLowerCase() });
-	}
-
-	window.ù = window.hu = function(a, c){
-		if (c) {
-			c = node(c);
-			a = node(a, c);
-			if (!a) return null;
-			if (c && !a.parentNode) c.appendChild(a);
-			return new U(a);
-		}
-		return new U(node(a));
 	}
 
 	fn.append = function(a){
@@ -48,8 +60,8 @@
 	}
 
 	fn.empty = function(){
-		for (var l=this.n.childNodes, i=l.length; i-->0;) {
-			if (l[i].tagName!=="defs") l[i].remove();
+		for (var l=this.n.childNodes, i=l.length; i--;) {
+			if (!/^defs$/i.test(l[i].tagName)) l[i].remove();
 		}
 		return this;
 	}
@@ -77,6 +89,13 @@
 		throw "Node not added to a SVG element";
 	}
 
+	fn.stops = function(){
+		for (var i=0; i<arguments.length; i++) {
+			ù('<stop', this).attr(arguments[i]);
+		}
+		return this;
+	}
+
 	fn.rgrad = function(cx, cy, r, c1, c2){
 		return this.def('<radialGradient').attr({cx:cx, cy:cy, r:r}).stops(
 			{offset:'0%', stopColor:c1},
@@ -84,27 +103,21 @@
 		);
 	}
 	
-	fn.stops = function(){
-		for (var i=0; i<arguments.length; i++) {
-			ù('<stop', this).attr(arguments[i]);
-		}
-		return this;
-	}
-	
 	fn.width = function(v){
-		if (v === undefined) return this.n.clientWidth;
-
-		return this.cssnv('width', v);
+		// window.getComputedStyle is the only thing that seems to work on FF when there are nested svg elements
+		if (v === undefined) return this.n.getBBox().width || parseInt(window.getComputedStyle(this.n).width); 
+		return this.attrnv('width', v);
 	}
 	fn.height = function(v){
-		if (v === undefined) return this.n.clientHeight;
-		return this.cssnv('height', v);
+		if (v === undefined) return this.n.getBBox().height || parseInt(window.getComputedStyle(this.n).height);
+		return this.attrnv('height', v);
 	}
 	
 	// css name value
 	fn.cssnv = function(name, value){
 		name = rcc(name);
 		if (value===undefined) return this.n.style[name];
+		if (typeof value === "number" && !nopx[name]) value += 'px';
 		this.n.style[name] = value;
 		return this;
 	}
@@ -165,11 +178,7 @@
 				v.f = fn.attr;
 				var d = this.n[k] || this.attr(k);
 				if (d) {
-					if (d.baseVal) { // for example SVGAnimatedLength
-						v.start = parseFloat(d.baseVal.value);
-					} else {
-						v.start = parseFloat(d);
-					}
+					v.start = parseFloat(d.baseVal ? d.baseVal.value : d); // you have a baseval for example in SVGAnimatedLength
 				} else {
 					v.start = 0;
 				}
