@@ -63,7 +63,7 @@
 		return this;
 	}
 	
-	fn.define = function(a){
+	fn.def = function(a){
 		var u = ù(a), p = this;
 		while (p) {
 			if (p.n.tagName==="svg") {
@@ -78,7 +78,7 @@
 	}
 
 	fn.rgrad = function(cx, cy, r, c1, c2){
-		return this.define('<radialGradient').attr({cx:cx, cy:cy, r:r}).stops(
+		return this.def('<radialGradient').attr({cx:cx, cy:cy, r:r}).stops(
 			{offset:'0%', stopColor:c1},
 			{offset:'100%', stopColor:c2}
 		);

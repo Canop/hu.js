@@ -7,7 +7,7 @@ You don't want to create an element with
 
     var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 	
-And you'd prefer to have concise and convenient functions not too inspired by Java, and to have internal references to gradients managed for you.
+And you'd prefer to have concise, chainable and convenient functions not too inspired by Java, and to have internal references to gradients managed for you.
 
 And that might be about all you need. Because SVG is a very high level model. You don't usually need a higher model to draw shapes in your browser. You don't need functions hiding the logic of the SVG.
 
@@ -52,7 +52,7 @@ This still simple example have more shapes, event handling and animations :
 
 See the source to see how it's done.
 
-A complex project using hu.js for all svg shape rendering is [Miaou](http://dystroy.org/miaou/static/intro.html). 
+hu.js is used for all svg shape building in the open source [Miaou](http://dystroy.org/miaou/static/intro.html) platform. 
 
 # API
 
@@ -105,9 +105,9 @@ Create a `line`, append it to a group and set a few attributes
 		strokeWidth:5, strokeLinecap:'round'
 	});
 
-## define
+## def
 
-`define` creates a SVG node, adds it to the `defs` element of the closest element of type `svg`, and gives it an automatically generated id.
+`def` creates a SVG node, adds it to the `defs` element of the closest element of type `svg`, and gives it an automatically generated id.
 
 This is useful for shared resources like gradients.
 
@@ -115,7 +115,7 @@ This is useful for shared resources like gradients.
 
 Create a diagonal linear gradient with four steps of decreasing opacity, use it in a rectangle
 
-    var grad = svg.define('<linearGradient>').attr({
+    var grad = svg.def('<linearGradient>').attr({
 		x1:0, y1:0, x2:1, y2:1
 	}).stops(
 		{offset:"0%", stopColor:"red", stopOpacity:1},
@@ -127,7 +127,7 @@ Create a diagonal linear gradient with four steps of decreasing opacity, use it 
 
 #### Using your own manual id instead of the automatically generated one
 
-	var logo = svg.define('<g>').attr('id','logo');
+	var logo = svg.def('<g>').attr('id','logo');
 	
 ## rgrad
 
