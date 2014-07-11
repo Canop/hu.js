@@ -111,7 +111,7 @@ Create a `line`, append it to a group and set a few attributes
 
 This is useful for shared resources like gradients.
 
-#### Example
+#### Examples
 
 Create a diagonal linear gradient with four steps of decreasing opacity, use it in a rectangle
 
@@ -124,6 +124,10 @@ Create a diagonal linear gradient with four steps of decreasing opacity, use it 
 		{offset:"100%", stopColor:"green", stopOpacity:0}
 	);
 	ù('<rect>', svg).attr({x:0, y:0, width:100, height:20, fill:grad});
+
+#### Using your own manual id instead of the automatically generated one
+
+	var logo = svg.define('<g>').attr('id','logo');
 	
 ## rgrad
 
