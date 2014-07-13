@@ -1,8 +1,4 @@
 
-# WARNING
-
-hu.js is still very young. There are probably still bugs.
-
 # Why hu.js
 
 The general awkwardness of DOM functions is even worse for SVG than for HTML.
@@ -175,3 +171,7 @@ Those functions bind or unbind an event handler. You can pass several event type
 	.on('click', function(){
 		hu(this).animate({x:100}, 500);
 	});
+	
+# License
+
+The [MIT License](http://opensource.org/licenses/MIT).
