@@ -9,12 +9,11 @@ You don't want to create an element with
 	
 And you'd prefer to have concise, chainable and convenient functions not too inspired by Java, and to have internal references to gradients managed for you.
 
-And that might be about all you need. Because SVG is a very high level model. You don't usually need a higher model to draw shapes in your browser. You don't need functions hiding the logic of the SVG.
+And that might be about all you need. Because SVG is already a very high level model you don't usually need a higher model to draw shapes in your browser. You don't need functions hiding the logic of the SVG.
 
-And you don't want to import a JavaScript file of 50 kb or more after minification for that. [hu.min.js](hu.min.js) weights 1.5 kb when gziped.
+And you don't want to import a big JavaScript file for that. [hu.min.js](hu.min.js) weights 1.3 kb when gziped.
 
 That's why you might find hu.js useful, assuming its limited set of features isn't too limited for you.
-
 
 # Basic Example
 
@@ -50,9 +49,9 @@ This still simple example have more shapes, event handling and animations :
 
 **[Demonstration](http://dystroy.org/demos/hu.js/demo.html)**
 
-See the source to see how it's done.
+See the commented source of the page to see how it's done.
 
-hu.js is used for all svg shape building in the open source [Miaou](http://dystroy.org/miaou/static/intro.html) platform. 
+hu.js is used for everything svg related in the open source [Miaou](http://dystroy.org/miaou/static/intro.html) platform, including a game. 
 
 # API
 

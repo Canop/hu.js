@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset=utf-8 />
-	<script src="hu.js"></script>
+	<script src="hu.min.js"></script>
 	<title>hu.js : demonstration</title>
 	<style type="text/css">
 	</style>
@@ -18,7 +18,7 @@ var svg = ù('<svg>', 'body').css({
 
 // register a reusable linear diagonal gradient
 var grad = svg.def('<linearGradient>').attr({
-	x1:"0", y1:"0", x2:"1", y2:"1"
+	x1:0, y1:0, x2:1, y2:1
 }).stops(
 	{offset:'0%', stopColor:'DarkSlateGray', stopOpacity:0.4},
 	{offset:'80%', stopColor:'FireBrick', stopOpacity:0.8}
@@ -33,11 +33,13 @@ for (var y = 50; y<svg.height(); y+= 100) {
 	}).animate({strokeOpacity:0, x2:svg.width()/2}, 15*y, ù.remove);
 }
 
+// compute a object {x:random,y:random}
 function randomPos(){
 	return {x:Math.random()*(svg.width()-100)|0, y:Math.random()*(svg.height()-100)|0}
 }
 
 // a few boxes which move when you click them
+// grouping is done here using nested svg elements to have relative positionning
 for (var i=0; i<30; i++) {
 	var g = ù('<svg>', svg)
 	.attr(randomPos())

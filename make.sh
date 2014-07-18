@@ -1,3 +1,3 @@
 #!/bin/bash
 
-uglifyjs hu.js --screw-ie8 -c > hu.min.js
+uglifyjs hu.js --comments '/Github/i' --screw-ie8 -mt > hu.min.js
