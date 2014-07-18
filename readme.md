@@ -11,7 +11,7 @@ And you'd prefer to have concise, chainable and convenient functions not too ins
 
 And that might be about all you need. Because SVG is a very high level model. You don't usually need a higher model to draw shapes in your browser. You don't need functions hiding the logic of the SVG.
 
-And you don't want to import a JavaScript file of 50 kb or more after minification for that. [hu.min.js](hu.min.js) weights 3 kb.
+And you don't want to import a JavaScript file of 50 kb or more after minification for that. [hu.min.js](hu.min.js) weights 1.5 kb when gziped.
 
 That's why you might find hu.js useful, assuming its limited set of features isn't too limited for you.
 
