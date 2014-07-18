@@ -11,7 +11,7 @@ And you'd prefer to have concise, chainable and convenient functions not too ins
 
 And that might be about all you need. Because SVG is already a very high level model you don't usually need a higher model to draw shapes in your browser. You don't need functions hiding the logic of the SVG.
 
-And you don't want to import a big JavaScript file for that. [hu.min.js](hu.min.js) weights 1.3 kb when gziped.
+And you don't want to import a big JavaScript file for that. [hu.min.js](hu.min.js) weights 1.3 kb when gziped and has no dependance.
 
 That's why you might find hu.js useful, assuming its limited set of features isn't too limited for you.
 
@@ -170,7 +170,30 @@ Those functions bind or unbind an event handler. You can pass several event type
 	.on('click', function(){
 		hu(this).animate({x:100}, 500);
 	});
-	
+
+## append / prependTo
+
+These functions let you append or prepend elements. The argument can be a svg node, a hu element, a css selector, a HTMLCollection, a jQuery element, etc.
+
+## remove
+
+Removes the element on which it is called.
+
+## empty
+
+Removes the svg nodes (not the defs : to remove everything, just call the standard DOM functions)
+
+## text
+
+Sets the innerText of the svg element.
+
+#### Example
+
+	ù('<text>', g)
+	.attr({x:50, y:50, textAnchor:"middle", alignmentBaseline:"middle"})
+	.css({fontWeight:'bold', fill:'white'})
+	.text('I am a centered white text');
+
 # License
 
 The [MIT License](http://opensource.org/licenses/MIT).
