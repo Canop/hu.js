@@ -3,15 +3,15 @@
 
 The general awkwardness of DOM functions is even worse for SVG than for HTML.
 
-You don't want to create an element with
+You don't want to create an element with:
 
     var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 	
-And you'd prefer to have concise, chainable and convenient functions not too inspired by Java, and to have internal references to gradients managed for you.
+And you'd rather have concise, chainable and convenient functions not too inspired by Java, and to have internal references to gradients managed for you.
 
-And that might be about all you need. Because SVG is already a very high level model you don't usually need a higher model to draw shapes in your browser. You don't need functions hiding the logic of the SVG.
+And that might be about all you need. Because SVG is already a very high level model, you don't usually need a higher model to draw shapes in your browser. You don't need functions hiding the logic of the SVG.
 
-And you don't want to import a big JavaScript file for that. [hu.min.js](hu.min.js) weights 1.3 kb when gziped and has no dependance.
+And you don't want to import a big JavaScript file for that. [hu.min.js](hu.min.js) weights 1.3 kb when gziped and has no dependency.
 
 That's why you might find hu.js useful, assuming its limited set of features isn't too limited for you.
 
@@ -61,24 +61,24 @@ The entry point of the library is the `hu` function. It's also aliased as `ù` w
 
 This function is used to
 
-- create a svg element (and optionnaly append it to an existing html or svg element)
+- create an svg element (and optionally append it to an existing html or svg element)
 - find an existing svg element with a css selector
-- wrap a provided svg element (and optionnaly append it to an existing html or svg element)
+- wrap a provided svg element (and optionally append it to an existing html or svg element)
 
 In all cases, there's always exactly one svg element in a resulting `Hu` object. The `hu` function returns `null` if the passed arguments make it impossible to create the element. If a provided selector (or nodelist, or jquery set, or array of elements) refers to more than one element, only the first one is considered.
 
 
-#### Exemples
+#### Examples
     
-Create a `svg` element and adding it to `document.body` :
+Create an `svg` element and add it to `document.body`:
 
     var svg = hu('<svg>', document.body);
     
-Just create an element that we'll append later :
+Just create an element that we'll append later:
 
     var group = hu('<g>');
 
-Get an element we have in our group :
+Get an element we have in our group:
 
     var rect = hu('#rectId', group);
     
@@ -106,7 +106,7 @@ Create a `line`, append it to a group and set a few attributes
 
 ## def
 
-`def` creates a SVG node, adds it to the `defs` element of the closest element of type `svg`, and gives it an automatically generated id.
+`def` creates an SVG node, adds it to the `defs` element of the closest element of type `svg`, and gives it an automatically generated id.
 
 This is useful for shared resources like gradients.
 
@@ -130,7 +130,7 @@ Create a diagonal linear gradient with four steps of decreasing opacity, use it 
 	
 ## rgrad
 
-`rgrad` is a shortcut to create a simple radial gradient
+`rgrad` is a shortcut to create a simple radial gradient.
 
 #### Example
 
@@ -173,7 +173,7 @@ Those functions bind or unbind an event handler. You can pass several event type
 
 ## append / prependTo
 
-These functions let you append or prepend elements. The argument can be a svg node, a hu element, a css selector, a HTMLCollection, a jQuery element, etc.
+These functions let you append or prepend elements. The argument can be an svg node, a hu element, a css selector, an HTMLCollection, a jQuery element, etc.
 
 ## remove
 
@@ -181,7 +181,7 @@ Removes the element on which it is called.
 
 ## empty
 
-Removes the svg nodes (not the defs : to remove everything, just call the standard DOM functions)
+Removes the svg nodes. (not the defs: to remove everything, just call the standard DOM functions)
 
 ## text
 
