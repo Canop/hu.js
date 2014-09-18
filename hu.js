@@ -36,7 +36,7 @@
 		return a[0]||a; // to support jQuery elements and nodelists
 	}	
 
-	window.ù = window.hu = function(a, c){
+	var ù = window.ù = window.hu = function(a, c){
 		if (!c) return new U(node(a));
 		c = node(c);
 		a = node(a, c);
