@@ -161,7 +161,7 @@
 		return this;
 	}
 	fn.remove = function(){
-		this.n.parentNode.removeChild(this.n);
+		if (this.n.parentNode) this.n.parentNode.removeChild(this.n);
 		return this;
 	}
 	
