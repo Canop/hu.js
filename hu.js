@@ -64,7 +64,7 @@
 	// (to remove everything, just call the standard DOM functions)
 	fn.empty = function(){
 		for (var l=this.n.childNodes, i=l.length; i--;) {
-			if (!/^defs$/i.test(l[i].tagName)) l[i].remove();
+			if (!/^defs$/i.test(l[i].tagName)) this.n.removeChild(l[i]);
 		}
 		return this;
 	}
@@ -161,7 +161,7 @@
 		return this;
 	}
 	fn.remove = function(){
-		this.n.remove();
+		this.n.parentNode.removeChild(this.n);
 		return this;
 	}
 	

@@ -7,7 +7,7 @@ You don't want to create an element with:
 
     var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 	
-And you'd rather have concise, chainable and convenient functions not too inspired by Java, and to have internal references to gradients managed for you.
+You'd rather have concise, chainable and convenient functions not too inspired by Java, and to have internal references to gradients managed for you. Of course you want the few traps and browser differences handled for you.
 
 And that might be about all you need. Because SVG is already a very high level model, you don't usually need a higher model to draw shapes in your browser. You don't need functions hiding the logic of the SVG.
 
@@ -45,7 +45,7 @@ That's why you might find hu.js useful, assuming its limited set of features isn
 
 # More complex examples
 
-This still simple example have more shapes, event handling and animations :
+This still simple example has more shapes, event handling and animations :
 
 **[Demonstration](http://dystroy.org/demos/hu.js/demo.html)**
 
