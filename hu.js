@@ -9,13 +9,13 @@
 		U = function(n) { this.n = n },
 		fn = U.prototype,
 		nopx = { // css properties which don't need a unit
-			columnCount: 1,
-			fillOpacity: 1,
-			flexGrow: 1,
-			flexShrink: 1,
-			fontWeight: 1,
-			opacity: 1,
-			zIndex: 1
+			"column-count": 1,
+			"fill-opacity": 1,
+			"flex-grow": 1,
+			"flex-shrink": 1,
+			"font-weight": 1,
+			"opacity": 1,
+			"z-index": 1
 		};
 
 	function node(a, c){
