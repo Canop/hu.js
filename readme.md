@@ -194,6 +194,17 @@ Sets the innerText of the svg element.
 	.css({fontWeight:'bold', fill:'white'})
 	.text('I am a centered white text');
 
+# Extension
+
+You can easily add functions to hu elements. 
+
+## Example
+
+	ù.fn.textpos = function(x, y){
+		this.attr({x:x, y:y, textAnchor:"middle", alignmentBaseline:"middle"});
+	}
+	ù('<text>', svg).text("my centered label").textpos(50, 50);
+
 # License
 
 The [MIT License](http://opensource.org/licenses/MIT).
