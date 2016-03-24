@@ -1,6 +1,9 @@
 
 # Why hu.js
 
+[![Chat on Miaou](https://dystroy.org/miaou/static/shields/room-en.svg)](https://dystroy.org/miaou/8?Javascript)
+[![Chat on Miaou](https://dystroy.org/miaou/static/shields/room-fr.svg)](https://dystroy.org/miaou/3?Code_Croissants)
+
 The general awkwardness of DOM functions is even worse for SVG than for HTML.
 
 You don't want to create an element with:
