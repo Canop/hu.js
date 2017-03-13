@@ -6,7 +6,7 @@ The general awkwardness of DOM functions is even worse for SVG than for HTML.
 You don't want to create an element with:
 
     var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-	
+
 You'd rather have concise, chainable and convenient functions not too inspired by Java, and to have internal references to gradients managed for you. Of course you want the few traps and browser differences handled for you.
 
 And that might be about all you need. Because SVG is already a very high level model, you don't usually need a higher model to draw shapes in your browser. You don't need functions hiding the logic of the SVG.
@@ -20,10 +20,10 @@ That's why you might find hu.js useful, assuming its limited set of features isn
 
     // Add to the body a new SVG element
     var svg = hu('<svg>', 'body').css({ width:100, height:100 });
-    
+
     // Define a reusable radial gradient
     var grad = svg.rgrad(0.3, 0.3, 0.8, 'yellow', 'green');
-    
+
     // Draw a circle using this gradient
     hu('<circle>', svg).attr({ cx:50, cy:50, r:50, fill:grad });
 
@@ -51,7 +51,7 @@ This still simple example has more shapes, event handling and animations :
 
 See the commented source of the page to see how it's done.
 
-hu.js is used for everything svg related in the open source [Miaou](http://dystroy.org/miaou/static/intro.html) platform, including a game. 
+hu.js is used for everything svg related in the open source [Miaou](http://dystroy.org/miaou/static/intro.html) platform, including a game.
 
 # API
 
@@ -69,11 +69,11 @@ In all cases, there's always exactly one svg element in a resulting `Hu` object.
 
 
 #### Examples
-    
+
 Create an `svg` element and add it to `document.body`:
 
     var svg = hu('<svg>', document.body);
-    
+
 Just create an element that we'll append later:
 
     var group = hu('<g>');
@@ -81,7 +81,14 @@ Just create an element that we'll append later:
 Get an element we have in our group:
 
     var rect = hu('#rectId', group);
-    
+
+Create an image and add it to the svg document:
+
+    hu('<image>', svg).attr({
+        "xlink:href": "some/image.png",
+        x: 50, y: 50, width: 200, height: 200
+    });
+
 ## attr / css
 
 These very similar functions let you set attributes or style properties.
@@ -91,11 +98,11 @@ These very similar functions let you set attributes or style properties.
 Get the value of an attribute
 
     var cx = circle.attr('cx');
-    
+
 Set a style property
 
     svg.css('background', '#2a4646');
-    
+
 Create a `line`, append it to a group and set a few attributes
 
     hu('<line>', group).attr({
@@ -127,7 +134,7 @@ Create a diagonal linear gradient with four steps of decreasing opacity, use it 
 #### Using your own manual id instead of the automatically generated one
 
 	var logo = svg.def('<g>').attr('id','logo');
-	
+
 ## rgrad
 
 `rgrad` is a shortcut to create a simple radial gradient.
@@ -142,7 +149,7 @@ Create a diagonal linear gradient with four steps of decreasing opacity, use it 
 
 Animates one or more numerical style properties or attributes.
 
-#### Example 
+#### Example
 
     ù('<line>', svg).attr({
     	x1:100, y1:0, x2:200, y2:20,
@@ -196,12 +203,12 @@ Sets the innerText of the svg element.
 
 # Extension
 
-You can easily add functions to hu elements. 
+You can easily add functions to hu elements.
 
 ## Example
 
 	ù.fn.textpos = function(x, y){
-		this.attr({x:x, y:y, textAnchor:"middle", alignmentBaseline:"middle"});
+		return this.attr({x:x, y:y, textAnchor:"middle", alignmentBaseline:"middle"});
 	}
 	ù('<text>', svg).text("my centered label").textpos(50, 50);
 
