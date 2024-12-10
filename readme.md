@@ -30,7 +30,7 @@ That's why you might find hu.js useful, assuming its limited set of features isn
 
 ### Result :
 
-![](./demo.svg)
+<img src="./demo.svg" width="100" height="100" alt="Result of the demo, a green ball with yellow sheen" />
 
 ### SVG :
 
