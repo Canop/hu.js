@@ -1,0 +1,9 @@
+<svg style="width: 100px; height: 100px;">
+    	<defs>
+    		<radialGradient id="ù1" cx="0.3" cy="0.3" r="0.8">
+    			<stop offset="0%" stop-color="yellow"></stop>
+    			<stop offset="100%" stop-color="green"></stop>
+    		</radialGradient>
+    	</defs>
+    	<circle cx="50" cy="50" r="50" fill="url(#ù1)"></circle>
+    </svg>

@@ -1,0 +1,16 @@
+{
+	"name": "hu.js",
+	"module": "hu.js",
+	"type": "module",
+	"scripts": {
+    "build": "bun build ./hu.js --minify > hu.min.js",
+		"check": "biome check --write hu.js"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	}
+}

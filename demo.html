@@ -1,75 +1,78 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset=utf-8 />
 	<script src="hu.min.js"></script>
-	<title>hu.js : demonstration</title>
+	<title>hu.js: demonstration</title>
 	<style type="text/css">
 	</style>
 </head>
+
 <body>
-<script>
+	<script>
 
-// build a svg element covering the whole window
-var svg = ù('<svg>', 'body').css({
-	background:'#bada55', position:'fixed', left:0, top:0, width:'100%', height:'100%'
-})
+		// build a svg element covering the whole window
+		const svg = hu('<svg>', 'body').css({
+			background: '#bada55', position: 'fixed', left: 0, top: 0, width: '100%', height: '100%'
+		})
 
 
-// register a reusable linear diagonal gradient
-var grad = svg.def('<linearGradient>').attr({
-	x1:0, y1:0, x2:1, y2:1
-}).stops(
-	{offset:'0%', stopColor:'DarkSlateGray', stopOpacity:0.4},
-	{offset:'80%', stopColor:'FireBrick', stopOpacity:0.8}
-);
+		// register a reusable linear diagonal gradient
+		const grad = svg.def('<linearGradient>').attr({
+			x1: 0, y1: 0, x2: 1, y2: 1
+		}).stops(
+			{ offset: '0%', stopColor: 'DarkSlateGray', stopOpacity: 0.4 },
+			{ offset: '80%', stopColor: 'FireBrick', stopOpacity: 0.8 }
+		);
 
-// a few rounded animated lines
-for (var y = 50; y<svg.height(); y+= 100) {
-	var l = ù('<line>', svg).attr({
-		x1:100, y1:y, x2:100+y, y2:y,
-		stroke:'#'+(Math.random()*16777216|0).toString(16), strokeOpacity:1,
-		strokeWidth:30, strokeLinecap:'round'
-	}).animate({strokeOpacity:0, x2:svg.width()/2}, 15*y, ù.remove);
-}
+		// a few rounded animated lines
+		for (let y = 50; y < svg.height(); y += 100) {
+			const l = hu('<line>', svg).attr({
+				x1: 100, y1: y, x2: 100 + y, y2: y,
+				stroke: '#' + (Math.random() * 16777216 | 0).toString(16), strokeOpacity: 1,
+				strokeWidth: 30, strokeLinecap: 'round'
+			}).animate({ strokeOpacity: 0, x2: svg.width() / 2 }, 15 * y, hu.remove);
+		}
 
-// compute a object {x:random,y:random}
-function randomPos(){
-	return {x:Math.random()*(svg.width()-100)|0, y:Math.random()*(svg.height()-100)|0}
-}
+		// compute a object {x:random,y:random}
+		function randomPos() {
+			return { x: Math.random() * (svg.width() - 100) | 0, y: Math.random() * (svg.height() - 100) | 0 }
+		}
 
-// a few boxes which move when you click them
-// grouping is done here using nested svg elements to have relative positionning
-for (var i=0; i<30; i++) {
-	var g = ù('<svg>', svg)
-	.attr(randomPos())
-	.attr({width:100,height:100})
-	.css({cursor:'pointer'})
-	.on('click', function(){
-		ù(this).animate(randomPos(), 500);
-	});
-	
-	ù('<rect>', g)
-	.attr({fill:grad, width:100, height:100});
+		// a few boxes which move when you click them
+		// grouping is done here using nested svg elements to have relative positionning
+		for (let i = 0; i < 30; i++) {
+			const g = hu('<svg>', svg)
+				.attr(randomPos())
+				.attr({ width: 100, height: 100 })
+				.css({ cursor: 'pointer' })
+				.on('click', function () {
+					hu(this).animate(randomPos(), 500);
+				});
 
-	ù('<text>', g)
-	.attr({x:50, y:50, textAnchor:"middle", alignmentBaseline:"middle"})
-	.css({fontWeight:'bold', fill:'white'})
-	.text('Click Me!');
-}
+			hu('<rect>', g)
+				.attr({ fill: grad, width: 100, height: 100 });
 
-// a simple rect with a gradient
-ù('<rect>').attr({
-	x:0, y:0, width:svg.width()/2, height:svg.height(),
-	fill:svg.def('<linearGradient>').attr({
-		x1:0, y1:0, x2:1, y2:1
-	}).stops(
-		{offset:"10%", stopColor:"green", stopOpacity:0.9},
-		{offset:"30%", stopColor:"blue", stopOpacity:0.2},
-		{offset:"50%", stopColor:"green", stopOpacity:0}
-	)
-}).prependTo(svg);
+			hu('<text>', g)
+				.attr({ x: 50, y: 50, textAnchor: "middle", alignmentBaseline: "middle" })
+				.css({ fontWeight: 'bold', fill: 'white' })
+				.text('Click Me!');
+		}
 
-</script>
+		// a simple rect with a gradient
+		hu('<rect>').attr({
+			x: 0, y: 0, width: svg.width() / 2, height: svg.height(),
+			fill: svg.def('<linearGradient>').attr({
+				x1: 0, y1: 0, x2: 1, y2: 1
+			}).stops(
+				{ offset: "10%", stopColor: "green", stopOpacity: 0.9 },
+				{ offset: "30%", stopColor: "blue", stopOpacity: 0.2 },
+				{ offset: "50%", stopColor: "green", stopOpacity: 0 }
+			)
+		}).prependTo(svg);
+
+	</script>
 </body>
+
 </html>
