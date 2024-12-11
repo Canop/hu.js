@@ -4,19 +4,18 @@
 (() => {
 	let nn = 1; // counter for dynamically generated def id
 	const U = function (n) {
-			this.n = n;
-		};
-		const fn = U.prototype;
-		const nopx = {
-			// css properties which don't need a unit
-			"column-count": 1,
-			"fill-opacity": 1,
-			"flex-grow": 1,
-			"flex-shrink": 1,
-			"font-weight": 1,
-			opacity: 1,
-			"z-index": 1,
-		};
+		this.n = n;
+	};
+	const fn = U.prototype;
+	const nopx = new Set([
+		"column-count",
+		"fill-opacity",
+		"flex-grow",
+		"flex-shrink",
+		"font-weight",
+		"opacity",
+		"z-index"
+	]);
 
 	function node(a, c) {
 		if (a instanceof U) return a.n;
