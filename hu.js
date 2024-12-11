@@ -1,7 +1,7 @@
 /* http://Github.com/Canop/hu.js */
 
 // A simple SVG library by denys.seguret@gmail.com
-(() => {
+;(() => {
 	let nn = 1; // counter for dynamically generated def id
 	const U = function (n) {
 		this.n = n;
