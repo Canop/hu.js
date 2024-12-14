@@ -1,0 +1,31 @@
+[
+    {
+        "files": {
+            "renameExtensions": true
+        },
+        "fixes": {
+            "importExtensions": true
+        },
+        "include": [
+            "./hu.js"
+        ],
+        "project": "./tsconfig.json"
+    },
+    {
+        "files": {
+            "renameExtensions": true
+        },
+        "fixes": {
+            "incompleteTypes": true,
+            "missingProperties": true,
+            "noImplicitAny": true
+        },
+        "cleanups": {
+            "suppressTypeErrors": true
+        },
+        "include": [
+            "./hu.{ts,tsx}"
+        ],
+        "project": "./tsconfig.json"
+    }
+]

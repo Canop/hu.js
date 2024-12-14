@@ -1,0 +1,23 @@
+{
+	"name": "hu.js",
+	"module": "hu.mjs",
+	"exports": {
+		".": {
+			"import": "./hu.mjs"
+		}
+	},
+	"type": "module",
+	"keywords": ["svg", "dom", "browser"],
+	"sideEffects": false,
+	"scripts": {
+		"build": "bun build ./hu.js --minify > hu.min.js",
+		"check": "biome check --write hu.js"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	}
+}
