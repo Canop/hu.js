@@ -6,7 +6,7 @@
 	"use strict";
 	
 	var nn = 1, // counter for dynamically generated def id
-		U = function(n) { this.n = n },
+		U = function(n){ this.n = n },
 		fn = U.prototype,
 		nopx = { // css properties which don't need a unit
 			"column-count": 1,
@@ -90,7 +90,7 @@
 			}
 			p = ù(p.parentNode);
 		}
-		throw "No parent SVG";
+		throw new Error("No parent SVG");
 	}
 
 	fn.stops = function(){
@@ -177,7 +177,7 @@
 		//  - v.f : the function used to set the style or attribute (fn.css or fn.attr)
 		//  - v.s : the start value
 		//  - v.e  : the end value
-		for (var k in dst){
+		for (var k in dst) {
 			var dstk = dst[k];
 			k = rcc(k);
 			var v = {k:k, e:dstk},
