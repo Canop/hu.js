@@ -148,7 +148,6 @@
 
 	// attr name value
 	fn.attrnv = function (name, value) {
-		name = rcc(name);
 		if (value === undefined) return this.n.getAttributeNS(null, name);
 		if (value instanceof U) value = `url(#${value.n.id})`;
 		this.n.setAttributeNS(null, name, value);
